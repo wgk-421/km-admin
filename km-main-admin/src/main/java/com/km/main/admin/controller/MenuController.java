@@ -23,7 +23,7 @@ public class MenuController {
 
     @Autowired
     private MenuMapper menuMapper;
-    @GetMapping("/list")
+    @GetMapping("/getRouters")
     public List<Menu> findMenuList() {
         MenuExample menuExample = new MenuExample();
         List<Menu> result = menuMapper.selectByExample(menuExample);
