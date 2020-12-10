@@ -1,7 +1,7 @@
 package com.km.main.admin.service;
 
 /**
- * @Description:
+ * @Description: 用户相关接口
  * @Author: GaoKunW
  * @Date: 2020/12/8 23:23
  */

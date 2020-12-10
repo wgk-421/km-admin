@@ -17,7 +17,7 @@ CREATE TABLE `km`.`sys_menu_t`
     `sort`             int          NULL DEFAULT 0 COMMENT '排序',
     `permission_name`  varchar(255) NULL DEFAULT NULL COMMENT '允许的权限名称',
     `icon`             varchar(100) NULL DEFAULT '#' COMMENT '图标',
-    `invalid_flag`     char(1)      NULL DEFAULT 1 COMMENT '1:有效 0:无效',
+    `valid_flag`     char(1)      NULL DEFAULT 1 COMMENT '1:有效 0:无效',
     `hidden`           char(1)      NULL DEFAULT 0 COMMENT '前端是否显示(1:隐藏 0:不隐藏)',
     `remark`           varchar(255) NOT NULL COMMENT '备注',
     `create_by`        varchar(20)  NULL DEFAULT '' COMMENT '创建人(sys_user_t表 user_id字段)',

@@ -29,16 +29,18 @@
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
         <!--指定生成model的路径-->
-        <javaModelGenerator targetPackage="com.km.main.admin.mbgen.model" targetProject="F:\git_code\km-admin\km-main-admin\src\main\java"/>
+        <javaModelGenerator targetPackage="com.km.main.admin.mbgen.model" targetProject="F:\git_code\km-admin\km-main-admin\src\main\java">
+            <property name="rootClass" value="com.km.main.admin.vo.BaseVO"/>
+        </javaModelGenerator>
         <!--指定生成mapper.xml的路径-->
         <sqlMapGenerator targetPackage="mapper" targetProject="F:\git_code\km-admin\km-main-admin\src\main\resources"/>
         <!--指定生成mapper接口的的路径-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.km.main.admin.mbgen.mapper"
                              targetProject="F:\git_code\km-admin\km-main-admin\src\main\java"/>
         <!--生成全部表tableName设为%-->
-        <table tableName="sys_user_t" schema="">
-            <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>
-            <domainObjectRenamingRule searchString="^SysUserT" replaceString="User" />
+        <table tableName="sys_menu_t" schema="">
+            <generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>
+            <domainObjectRenamingRule searchString="^SysMenuT" replaceString="Menu" />
         </table>
     </context>
 </generatorConfiguration>

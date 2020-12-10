@@ -1,8 +1,8 @@
 package com.km.main.admin.controller;
 
-import com.km.main.admin.mbgen.mapper.MenuMapper;
+import com.km.main.admin.common.CommonResultInfo;
 import com.km.main.admin.mbgen.model.Menu;
-import com.km.main.admin.mbgen.model.MenuExample;
+import com.km.main.admin.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: 菜单管理
  * @Author: GaoKunW
  * @Date: 2020/12/6 23:29
  */
@@ -22,11 +22,11 @@ import java.util.List;
 public class MenuController {
 
     @Autowired
-    private MenuMapper menuMapper;
+    private IMenuService menuService;
+
     @GetMapping("/getRouters")
-    public List<Menu> findMenuList() {
-        MenuExample menuExample = new MenuExample();
-        List<Menu> result = menuMapper.selectByExample(menuExample);
-        return result;
+    public CommonResultInfo findMenuList() {
+        List<Menu> menuList = menuService.findMenuAllList();
+        return CommonResultInfo.success(menuService.mergeRouterByMenu(menuList));
     }
 }

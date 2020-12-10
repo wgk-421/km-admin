@@ -1,12 +1,13 @@
 package com.km.main.admin.controller;
 
-import com.km.main.admin.common.CommonResult;
+import com.km.main.admin.common.CommonResultInfo;
 import com.km.main.admin.mbgen.mapper.UserMapper;
+import com.km.main.admin.mbgen.model.Menu;
 import com.km.main.admin.mbgen.model.User;
 import com.km.main.admin.mbgen.model.UserExample;
+import com.km.main.admin.service.IMenuService;
 import com.km.main.admin.service.IUserAdminService;
 import com.km.main.admin.vo.request.UserParam;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,17 +35,28 @@ public class AdminUserController {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 用户登录
+     *
+     * @param userParam 用户入参
+     * @return 返回token
+     */
     @PostMapping("/login")
-    public CommonResult userLogin(@Validated @RequestBody UserParam userParam) {
+    public CommonResultInfo userLogin(@Validated @RequestBody UserParam userParam) {
         String result = userAdminService.login(userParam.getUsername(), userParam.getPassword());
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", result);
         tokenMap.put("tokenHead", "User-Auth-Token");
-        return CommonResult.success(tokenMap);
+        return CommonResultInfo.success(tokenMap);
     }
 
+    /**
+     * 获取登录用户信息
+     *
+     * @return 用户信息
+     */
     @GetMapping("/info")
-    public CommonResult getUserInfo() {
+    public CommonResultInfo getUserInfo() {
         UserExample user = new UserExample();
         List<User> result =  userMapper.selectByExample(user);
         Map<String, Object> data = new HashMap<>();
@@ -52,6 +64,6 @@ public class AdminUserController {
         roles.add("admin");
         data.put("username", result.get(0).getUserName());
         data.put("roles", roles);
-        return CommonResult.success(data);
+        return CommonResultInfo.success(data);
     }
 }

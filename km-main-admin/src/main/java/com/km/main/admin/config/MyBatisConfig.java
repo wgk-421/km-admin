@@ -11,6 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan("com.km.main.admin.mbgen.mapper")
+@MapperScan({"com.km.main.admin.mbgen.mapper", "com.km.main.admin.dao"})
 public class MyBatisConfig {
 }
