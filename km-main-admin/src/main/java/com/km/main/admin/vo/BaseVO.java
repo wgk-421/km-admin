@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 public class BaseVO {
     @ApiModelProperty(value = "1:有效 0:无效")
-    private String validFlag;
+    private Integer validFlag;
 
     @ApiModelProperty(value = "备注")
     private String remark;

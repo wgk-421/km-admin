@@ -1,15 +1,16 @@
 package com.km.main.admin.service.impl;
 
+import com.km.main.admin.common.StringUtils;
 import com.km.main.admin.constant.KmSysConstant;
 import com.km.main.admin.dao.IMenuDao;
 import com.km.main.admin.mbgen.model.Menu;
 import com.km.main.admin.service.IMenuService;
 import com.km.main.admin.vo.MetaVO;
 import com.km.main.admin.vo.RouterVO;
+import org.apache.commons.lang3.math.IEEE754rUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,11 +118,11 @@ public class MenuService implements IMenuService {
         }
         allMenu.stream().forEach(item -> {
             RouterVO router = new RouterVO();
-            router.setHidden("1".equals(item.getHidden()));
-            router.setName(StringUtils.capitalize(item.getUrl()));
-            router.setPath(KmSysConstant.URL_ROOT + item.getUrl());
-            router.setComponent(item.getComponentPath());
-            router.setMeta(new MetaVO(item.getMenuName(), item.getIcon(), true));
+            router.setHidden( 1 == item.getHidden());
+            router.setName(getRouteName(item));
+            router.setPath(getRoutePath(item));
+            router.setComponent(getComponent(item));
+            router.setMeta(new MetaVO(item.getMenuName(), item.getIcon(), 1 == item.getIsCache()));
             List<Menu> childList = item.getChildList();
             if(!CollectionUtils.isEmpty(childList) && KmSysConstant.MENU_TYPE_C.equals(item.getMenuType())) {
                 router.setAlwaysShow(true);
@@ -130,9 +131,9 @@ public class MenuService implements IMenuService {
             } else if(isInsideLink(item)) {
                 List<RouterVO> childrenList = new ArrayList<>();
                 RouterVO children = new RouterVO();
-                children.setPath(item.getUrl());
+                children.setPath(item.getRoutePath());
                 children.setComponent(item.getComponentPath());
-                children.setName(StringUtils.capitalize(item.getUrl()));
+                children.setName(StringUtils.capitalize(item.getRoutePath()));
                 children.setMeta(new MetaVO(item.getMenuName(), item.getIcon(), true));
                 childrenList.add(children);
                 router.setChildren(childrenList);
@@ -141,6 +142,39 @@ public class MenuService implements IMenuService {
         });
         return routers;
     }
+
+    private String getRouteName (Menu menu) {
+        // routeName
+        String routeName= StringUtils.capitalize(menu.getRoutePath());
+        if (0 == menu.getParentId() && KmSysConstant.MENU_TYPE_M.equals(menu.getMenuType())) {
+            routeName = KmSysConstant.EMPTY;
+        }
+        return routeName;
+    }
+
+    private String getRoutePath (Menu menu) {
+        String routePath = menu.getRoutePath();
+        if (0 == menu.getParentId() && KmSysConstant.MENU_TYPE_C.equals(menu.getMenuType())) {
+            routePath = KmSysConstant.URL_ROOT + routePath;
+        } else if (0 == menu.getParentId() && KmSysConstant.MENU_TYPE_M.equals(menu.getMenuType())) {
+            routePath = KmSysConstant.URL_ROOT;
+        }
+        return routePath;
+    }
+
+    private String getComponent (Menu menu) {
+        String component = KmSysConstant.LAYOUT;
+        if (!StringUtils.isEmpty(menu.getComponentPath()) &&  KmSysConstant.MENU_TYPE_M.equals(menu.getMenuType())) {
+            component = menu.getComponentPath();
+        } else if (isParentView(menu) && StringUtils.isEmpty(menu.getComponentPath())) {
+            component = KmSysConstant.PARENT_VIEW;
+        }
+        return component;
+    }
+    public boolean isParentView(Menu menu) {
+        return menu.getParentId().intValue() != 0 && KmSysConstant.MENU_TYPE_C.equals(menu.getMenuType());
+    }
+
 
     /**
      * 菜单类型的

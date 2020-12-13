@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RooClass.BaseMapper">
   <resultMap id="BaseResultMap" type="com.km.main.admin.vo.BaseVO">
-    <result column="valid_flag" jdbcType="CHAR" property="validFlag" />
+    <result column="valid_flag" jdbcType="INTEGER" property="validFlag" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />

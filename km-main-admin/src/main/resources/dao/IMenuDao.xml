@@ -3,14 +3,29 @@
 <mapper namespace="com.km.main.admin.dao.IMenuDao">
     <resultMap id="BaseResultMap" type="com.km.main.admin.mbgen.model.Menu"
                extends="com.km.main.admin.mbgen.mapper.MenuMapper.BaseResultMap">
-
     </resultMap>
     <select id="findMenuAllList" resultMap="BaseResultMap">
-    SELECT
-	*
-    FROM
-        km.sys_menu_t t
-    WHERE
-	t.valid_flag = '1'
+        SELECT
+        t.menu_id,
+        t.parent_id,
+        t.menu_name,
+        t.route_path,
+        t.component_path,
+        t.menu_type,
+        t.link_type,
+        t.sort,
+        t.permission_name,
+        t.icon,
+        t.hidden,
+        t.is_cache,
+        t.valid_flag,
+        t.remark
+        FROM
+            sys_menu_t t
+        WHERE
+            t.valid_flag = 1
+        ORDER BY
+            t.parent_id,
+            t.sort
   </select>
 </mapper>

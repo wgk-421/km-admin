@@ -2,10 +2,8 @@ package com.km.main.admin.controller;
 
 import com.km.main.admin.common.CommonResultInfo;
 import com.km.main.admin.mbgen.mapper.UserMapper;
-import com.km.main.admin.mbgen.model.Menu;
 import com.km.main.admin.mbgen.model.User;
 import com.km.main.admin.mbgen.model.UserExample;
-import com.km.main.admin.service.IMenuService;
 import com.km.main.admin.service.IUserAdminService;
 import com.km.main.admin.vo.request.UserParam;
 import org.springframework.beans.factory.annotation.Autowired;
