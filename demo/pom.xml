@@ -9,17 +9,26 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>km-db</artifactId>
+    <artifactId>demo</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <dependencies>
+
+        <!-- 系统公共模块 -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.km</groupId>
+            <artifactId>common</artifactId>
         </dependency>
+
+        <!--SpringBoot通用依赖模块-->
         <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.4.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
 </project>
