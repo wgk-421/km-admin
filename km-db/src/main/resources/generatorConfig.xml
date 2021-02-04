@@ -37,9 +37,26 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.km.common.generate.mapper"
                              targetProject="E:\code\git\km-admin\common\src\main\java"/>
         <!--生成全部表tableName设为%-->
-        <table tableName="sys_menu_t" schema="">
-            <generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>
-            <domainObjectRenamingRule searchString="^SysMenuT" replaceString="Menu" />
+        <table tableName="ums_resource" schema="">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+<!--            <domainObjectRenamingRule searchString="^SysMenuT" replaceString="Menu" />-->
         </table>
+<!--        &lt;!&ndash;后台用户角色表&ndash;&gt;-->
+<!--        <table tableName="ums_role">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        &lt;!&ndash;后台用户权限表&ndash;&gt;-->
+<!--        <table tableName="ums_permission">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="ums_admin_role_relation">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="ums_role_permission_relation">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="ums_admin_permission_relation">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

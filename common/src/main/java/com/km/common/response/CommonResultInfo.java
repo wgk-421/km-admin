@@ -46,6 +46,14 @@ public class CommonResultInfo<T> {
         return new CommonResultInfo<T>(SUCCESS_STATUS, SUCCESS_MSG, data);
     }
 
+    public static <T> CommonResultInfo<T> buildSuccess(String msg) {
+        return buildSuccess(null, msg);
+    }
+
+    public static <T> CommonResultInfo<T> buildSuccess(T data, String msg) {
+        return new CommonResultInfo<T>(SUCCESS_STATUS, msg, data);
+    }
+
     /**
      * 成功返回结果
      *
