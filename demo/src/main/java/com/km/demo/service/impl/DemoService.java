@@ -1,8 +1,9 @@
-package com.km.demo.service;
+package com.km.demo.service.impl;
 
 import com.km.common.generate.mapper.MenuMapper;
 import com.km.common.generate.model.Menu;
 import com.km.common.generate.model.MenuExample;
+import com.km.demo.service.IDemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @Date 2021/2/3
  */
 @Service
-public class DemoService implements IDemoService{
+public class DemoService implements IDemoService {
     @Autowired
     private MenuMapper menuMapper;
 

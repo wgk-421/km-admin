@@ -41,7 +41,7 @@ public abstract class BaseSwaggerConfig {
                 .build()
                 .protocols(new LinkedHashSet<>(Arrays.asList("HTTPS", "HTTP")));
         // 安全验证开关
-        if(swaggerData.isEnableSecurity()) {
+        if (swaggerData.isEnableSecurity()) {
             docket.securitySchemes(securitySchemes()).securityContexts(securityContexts());
         }
         return docket;
@@ -74,14 +74,15 @@ public abstract class BaseSwaggerConfig {
     }
 
     private SecurityReference apiKeyReference() {
-        return new SecurityReference("Authorization", new AuthorizationScope[]{new AuthorizationScope("global", "")});
+        return new SecurityReference("Authorization", new AuthorizationScope[]{new AuthorizationScope("global", "accessEverything")});
     }
 
     private ApiInfo apiInfo(SwaggerData swaggerData) {
         return new ApiInfoBuilder()
                 .title(swaggerData.getTitle())
                 .description(swaggerData.getDescription())
-                .contact(new Contact(swaggerData.getContactName(), swaggerData.getContactUrl(), swaggerData.getContactEmail()))
+                .contact(new Contact(swaggerData.getContactName(), swaggerData.getContactUrl(),
+                        swaggerData.getContactEmail()))
                 .version(swaggerData.getVersion())
                 .build();
     }
