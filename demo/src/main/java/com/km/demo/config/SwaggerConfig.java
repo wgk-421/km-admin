@@ -17,6 +17,6 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerData swaggerData() {
         return SwaggerData.builder().apiBasePackage("com.km.demo.controller").description("demo").title("demo " +
-                "test").version("1.0").contactEmail("wanggaokun@wo.cn").contactUrl("####").contactName("GaoKUnW").enableSecurity(true).build();
+                "test").version("1.0").contactEmail("wanggaokun@wo.cn").contactUrl("####").contactName("GaoKUnW").enableSecurity(false).build();
     }
 }

@@ -1,7 +1,7 @@
 package com.km.demo.service.impl;
 
 import com.km.common.response.CommonResultInfo;
-import com.km.common.utils.StringUtils;
+import com.km.common.utils.string.StringUtils;
 import com.km.demo.service.IUmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

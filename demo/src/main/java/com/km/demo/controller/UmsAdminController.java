@@ -29,7 +29,7 @@ import java.util.Map;
  */
 @RestController
 @Api(tags = "后台用户管理")
-@RequestMapping("/admin")
+@RequestMapping("/admin/user")
 public class UmsAdminController {
     @Autowired
     private IUmsAdminService adminService;

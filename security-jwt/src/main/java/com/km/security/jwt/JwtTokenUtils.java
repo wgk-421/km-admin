@@ -1,6 +1,6 @@
 package com.km.security.jwt;
 
-import com.km.common.utils.StringUtils;
+import com.km.common.utils.string.StringUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

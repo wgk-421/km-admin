@@ -1,4 +1,4 @@
-package com.km.common.utils;
+package com.km.common.utils.string;
 
 /**
  * Description: 字符串工具类 可自定义方法
